@@ -15,3 +15,9 @@ db.users.findOne({'username': 'dwight'}, {'email': true, '_id': false})
 
 //Supposing a scores collection similar to the one presented, how would you find all documents with type: essay and score: 50 and only retrieve the student field?
 db.scores.find({'type': 'essay', 'score': 50}, {'_id': false, 'student': true})
+
+//$gt greater than - $less than
+db.scores.find({score: {$gt: 95, $lt: 98}})
+
+//finds documents with a score between 50 and 60, inclusive
+db.scores.find({score: {$gte: 50, $lte: 60}});
