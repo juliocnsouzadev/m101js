@@ -26,3 +26,22 @@ db.scores.find({score: {$gte: 50, $lte: 60}});
 db.users.find({name: {$gte: "F", $lte: "Q"}});
 //or
 db.users.find({name: {$gte: "F", $lte: "Q"}});
+
+//find all that have names
+db.users.find({name: {$exists: true}});
+
+//find all that have names of string type
+db.users.find({name: {$type: 2}});
+
+//using regex -> all names with 'a' in anywhere in the name
+db.users.find({name: {$regex: 'a'}});
+
+//using regex -> all names with 'a' at the end
+db.users.find({name: {$regex: 'a$'}});
+
+//using regex -> all names with 'a' as first char
+db.users.find({name: {$regex: '^a'}});
+
+//Write a query that retrieves documents from a users collection where the name has a "q" in it, and the document has an email field.
+db.users.find({name: {$regex: "q"}, email: {$exists: true}});
+
