@@ -47,3 +47,7 @@ db.users.find({name: {$regex: "q"}, email: {$exists: true}});
 
 //How would you find all documents in the scores collection where the score is less than 50 or greater than 90?
 db.scores.find({$or: [{score: {$lt: 50}}, {score: {$gt: 90}}]});
+
+//Find all documents with score between 50 and 60
+db.scores.find({score: {$gt: 50}, score : {$lt: 60}}); //won't work
+db.scores.find({$and: [{score: {$gt: 50}}, {score: {$lt: 60}}]}); //ok
