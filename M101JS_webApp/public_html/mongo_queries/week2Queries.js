@@ -68,3 +68,14 @@ db.users.find({friends: {$all: ["Joe", "Bob"]}, favorites: {$in: ["running", "pi
 //what's the result?
 //this: { name : "Cliff" , friends : [ "Pete" , "Joe" , "Tom" , "Bob" ] , favorites : [ "pickles", "cycling" ] }
 //$all must have all parameters in the array, $in must hava at least one
+
+/*
+ * Suppose a simple e-commerce product catalog called catalog with documents that look like this:
+ { product : "Super Duper-o-phonic",
+ price : 100000000000,
+ reviews : [ { user : "fred", comment : "Great!" , rating : 5 },
+ { user : "tom" , comment : "I agree with Fred, somewhat!" , rating : 4 } ],
+ ... }
+ Write a query that finds all products that cost more than 10,000 and that have a rating of 5 or better.
+ */
+db.catalog.find({price: {$gt: 10000}, "reviews.rating": {$gte: 5}});
