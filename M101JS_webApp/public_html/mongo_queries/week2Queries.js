@@ -56,3 +56,15 @@ db.scores.find({$and: [{score: {$gt: 50}}, {score: {$lt: 60}}]}); //ok
 db.products.find({tags: "shiny"});
 //can return this :{ _id : 1040 , name : "Snappy Snap-o-lux", tags : "shiny" }
 //or :{ _id : 42 , name : "Whizzy Wiz-o-matic", tags : [ "awesome", "shiny" , "green" ] }
+
+//do this inserts
+db.users.insert(
+        {name: "William", friends: ["Bob", "Fred"], favorites: ["hamburgers", "running"]});
+db.users.insert({name: "Stephen", friends: ["Joe", "Pete"], favorites: ["pickles", "swimming"]});
+db.users.insert({name: "Cliff", friends: ["Pete", "Joe", "Tom", "Bob"], favorites: ["pickles", "cycling"]});
+db.users.insert({name: "Harry", friends: ["Joe", "Bob"], favorites: ["hot dogs", "swimming"]});
+//than if you do the query:
+db.users.find({friends: {$all: ["Joe", "Bob"]}, favorites: {$in: ["running", "pickles"]}});
+//what's the result?
+//this: { name : "Cliff" , friends : [ "Pete" , "Joe" , "Tom" , "Bob" ] , favorites : [ "pickles", "cycling" ] }
+//$all must have all parameters in the array, $in must hava at least one
