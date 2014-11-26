@@ -51,3 +51,8 @@ db.scores.find({$or: [{score: {$lt: 50}}, {score: {$gt: 90}}]});
 //Find all documents with score between 50 and 60
 db.scores.find({score: {$gt: 50}, score : {$lt: 60}}); //won't work
 db.scores.find({$and: [{score: {$gt: 50}}, {score: {$lt: 60}}]}); //ok
+
+//find in arrays
+db.products.find({tags: "shiny"});
+//can return this :{ _id : 1040 , name : "Snappy Snap-o-lux", tags : "shiny" }
+//or :{ _id : 42 , name : "Whizzy Wiz-o-matic", tags : [ "awesome", "shiny" , "green" ] }
