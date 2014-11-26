@@ -45,3 +45,5 @@ db.users.find({name: {$regex: '^a'}});
 //Write a query that retrieves documents from a users collection where the name has a "q" in it, and the document has an email field.
 db.users.find({name: {$regex: "q"}, email: {$exists: true}});
 
+//How would you find all documents in the scores collection where the score is less than 50 or greater than 90?
+db.scores.find({$or: [{score: {$lt: 50}}, {score: {$gt: 90}}]});
