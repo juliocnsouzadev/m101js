@@ -79,3 +79,15 @@ db.users.find({friends: {$all: ["Joe", "Bob"]}, favorites: {$in: ["running", "pi
  Write a query that finds all products that cost more than 10,000 and that have a rating of 5 or better.
  */
 db.catalog.find({price: {$gt: 10000}, "reviews.rating": {$gte: 5}});
+
+/*
+ Recall the documents in the scores collection:
+ {
+ "_id" : ObjectId("50844162cb4cf4564b4694f8"),
+ "student" : 0,
+ "type" : "exam",
+ "score" : 75
+ }
+ Write a query that retrieves exam documents, sorted by score in descending order, skipping the first 50 and showing only the next 20.
+ */
+db.scores.find({type: "exam"}).sort({score: -1}).skip(50).limit(20);
