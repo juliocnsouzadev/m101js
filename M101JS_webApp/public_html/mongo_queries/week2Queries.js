@@ -91,3 +91,9 @@ db.catalog.find({price: {$gt: 10000}, "reviews.rating": {$gte: 5}});
  Write a query that retrieves exam documents, sorted by score in descending order, skipping the first 50 and showing only the next 20.
  */
 db.scores.find({type: "exam"}).sort({score: -1}).skip(50).limit(20);
+
+//count
+db.scores.count({type: "exam"});
+
+//How would you count the documents in the scores collection where the type was "essay" and the score was greater than 90?
+db.scores.count({type: "essay", score: {$gt: 90}});
