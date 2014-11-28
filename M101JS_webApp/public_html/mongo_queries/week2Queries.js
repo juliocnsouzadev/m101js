@@ -121,6 +121,20 @@ db.users.update({name: "Jordan"}, {$inc: {age: 1}}); //now the age is 29
  "phone" : "301-512-7434",
  "country" : "US"
  }
- Please set myrnarackham's country code to "RU" but leave the rest of the document (and the rest of the collection) unchanged. 
+ Please set myrnarackham's country code to "RU" but leave the rest of the document (and the rest of the collection) unchanged.
  */
-db.users.update({_id: "myrnarackham"}, {$set: {country: "RU"}})
+db.users.update({_id: "myrnarackham"}, {$set: {country: "RU"}});
+
+//remove fields
+db.users.update({name: "Jordan"}, {$unset: {age: 1}});
+
+/*
+ Write an update query that will remove the "interests" field in the following document in the users collection.
+ {
+ "_id" : "jimmy" ,
+ "favorite_color" : "blue" ,
+ "interests" : [ "debating" , "politics" ] 
+ }
+ Do not simply empty the array. Remove the key : value pair from the document.
+ */
+db.users.update({_id: "jimmy"}, {$unset: {interests: 1}});
