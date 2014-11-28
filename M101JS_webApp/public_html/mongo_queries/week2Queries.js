@@ -107,3 +107,20 @@ db.scores.count({type: "essay", score: {$gt: 90}});
  What would be the state of the collection after the update?
  */
 //{ "_id" : "Texas", "population" : 30000000 }
+
+//update just a part of the objetc, not replace all
+//set -> subtitute or add just the value
+db.users.update({name: "Jordan"}, {$set: {age: 28}});
+//inc -> increment
+db.users.update({name: "Jordan"}, {$inc: {age: 1}}); //now the age is 29
+
+/*
+ For the users collection, the documents are of the form
+ {
+ "_id" : "myrnarackham",
+ "phone" : "301-512-7434",
+ "country" : "US"
+ }
+ Please set myrnarackham's country code to "RU" but leave the rest of the document (and the rest of the collection) unchanged. 
+ */
+db.users.update({_id: "myrnarackham"}, {$set: {country: "RU"}})
