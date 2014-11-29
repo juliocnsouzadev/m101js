@@ -150,3 +150,22 @@ db.users.update({_id: "jimmy"}, {$unset: {interests: 1}});
  db.friends.update( { _id : "Mike" }, { $pushAll: { interests : [ "skydiving" , "skiing" ] } } );
  */
 //{ _id : "Mike" , "interests" : [ "botany", "skydiving", "skydiving", "skiing" ] }
+
+//upsert add and document does not exist, something like "create or update"
+/*
+ After performing the following update on an empty collection
+ What could be a document in the collection?
+ */
+db.foo.update({username: 'bar'}, {'$set': {'interests': ['cat', 'dog']}}, {upsert: true});
+db.foo.find().pretty();
+//result:
+/*
+ {
+ "_id" : ObjectId("547a41dea22b8d44d3cb9f3f"),
+ "interests" : [
+ "cat",
+ "dog"
+ ],
+ "username" : "bar"
+ }
+ */
