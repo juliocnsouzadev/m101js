@@ -133,8 +133,20 @@ db.users.update({name: "Jordan"}, {$unset: {age: 1}});
  {
  "_id" : "jimmy" ,
  "favorite_color" : "blue" ,
- "interests" : [ "debating" , "politics" ] 
+ "interests" : [ "debating" , "politics" ]
  }
  Do not simply empty the array. Remove the key : value pair from the document.
  */
 db.users.update({_id: "jimmy"}, {$unset: {interests: 1}});
+
+/*
+ * USING $PUSH, $POP, $PULL, $PUSHALL, $PULLALL, $ADDTOSET
+ Suppose you have the following document in your friends collection:
+ { _id : "Mike", interests : [ "chess", "botany" ] }
+ What will the result of the following updates be?
+ db.friends.update( { _id : "Mike" }, { $push : { interests : "skydiving" } } );
+ db.friends.update( { _id : "Mike" }, { $pop : { interests : -1 } } );
+ db.friends.update( { _id : "Mike" }, { $addToSet : { interests : "skydiving" } } );
+ db.friends.update( { _id : "Mike" }, { $pushAll: { interests : [ "skydiving" , "skiing" ] } } );
+ */
+//{ _id : "Mike" , "interests" : [ "botany", "skydiving", "skydiving", "skiing" ] }
