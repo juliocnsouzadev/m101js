@@ -3,8 +3,7 @@ M101JS
 
 Codes created during M101JS (Mongo for NodeJS Developers)
 
-### Week 2
- - [Detalhes](https://github.com/juliocnsouzadev/M101JS/blob/master/M101JS_webApp/public_html/mongo_queries/week2Queries.js)
+### Week 2 [Detalhes](https://github.com/juliocnsouzadev/M101JS/blob/master/M101JS_webApp/public_html/mongo_queries/week2Queries.js)
 * CRUD and the Mongo Shell
 * Secrets of the Mongo Shell
 * BSON Introduced
