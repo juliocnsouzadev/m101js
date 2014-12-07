@@ -27,6 +27,7 @@ MongoClient.connect('mongodb://localhost:27017/m101js', function (err, db) {
 
         docs.forEach(function (doc) {
             console.dir(doc);
+            console.log("grade: " + doc.grade);
             //console.dir(doc.student + " got a good grade!");
         });
 
