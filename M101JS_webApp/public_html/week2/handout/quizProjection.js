@@ -15,10 +15,11 @@ MongoClient.connect('mongodb://localhost:27017/m101js', function (err, db) {
     if (err)
         throw err;
 
+    var query = {}; //quiz
+    var projection = {'grade': 1, '_id': 0}; //quiz
 
-
-    var query = {'grade': 100};
-    var projection = {'student': 1, '_id': 0};
+//    var query = {'grade': 100};
+//    var projection = {'student': 1, '_id': 0};
 
     db.collection('grades').find(query, projection).toArray(function (err, docs) {
         if (err)
@@ -26,7 +27,7 @@ MongoClient.connect('mongodb://localhost:27017/m101js', function (err, db) {
 
         docs.forEach(function (doc) {
             console.dir(doc);
-            console.dir(doc.student + " got a good grade!");
+            //console.dir(doc.student + " got a good grade!");
         });
 
         db.close();
