@@ -70,7 +70,7 @@ db.users.find({friends: {$all: ["Joe", "Bob"]}, favorites: {$in: ["running", "pi
 //$all must have all parameters in the array, $in must hava at least one
 
 /*
- * Suppose a simple e-commerce product catalog called catalog with documents that look like this:
+ Suppose a simple e-commerce product catalog called catalog with documents that look like this:
  { product : "Super Duper-o-phonic",
  price : 100000000000,
  reviews : [ { user : "fred", comment : "Great!" , rating : 5 },
@@ -180,6 +180,7 @@ db.foo.find().pretty();
  "type" : "exam",
  "score" : 75
  }
+
  Give every document with a score less than 70 an extra 20 points.
  */
 db.scores.update({score: {$lt: 70}}, {$inc: {score: 20}}, {multi: true});
@@ -197,6 +198,7 @@ db.scores.update({score: {$lt: 70}}, {$inc: {score: 20}}, {multi: true});
  Delete every document with a score of less than 60.
  */
 db.scores.remove({score: {$lt: 60}});
+
 
 //if you need to remove you can use:
 db.scores.remove({}); //less performatic for large collections
